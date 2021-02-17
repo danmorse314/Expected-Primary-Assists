@@ -26,6 +26,7 @@ Calculating the likelihood of a pass leading to a goal is essentially a two-part
 For the first part, we'll construct an expected completion model similar to what you'll find in the [NFL analytics community](https://www.opensourcefootball.com/posts/2020-09-28-nflfastr-ep-wp-and-cp-models/). I utilized extreme gradient boosting (xgboost) for this model. The features selected were some basic game information like time remaining, strength state, and score differential, along with various classifications of some of the more common types of passes. The hyperparameters were identified using 5-fold cross validation before being input into the final model.
 
 ![pass importance matrix](https://github.com/danmorse314/Expected-Primary-Assists/blob/main/figures/pass%20model%20feature%20importance.png)
+*Fig. 1*
 
 The distance traveled by the intended pass is far and away the most important feature in this model. Strength state, which in this case is simply number of skaters for the passing team minus the number of skaters for the opposing team (ie a 5-on-4 powerplay yields a strength of 1). Whether a pass was direct or indirect (indirect being passes off the boards) was also more important than all of our pass classifications. The most significant classification came with our slot pass, which makes sense as it's generally more difficult to find open space right in front of the net to get a pass through/ According to the final model, passes across the slot averaged a 54.2% completion probability vs 73.7% for all other passes.
 
@@ -38,6 +39,7 @@ Expected goals models in the NHL are numerous, but one thing they all omit is pa
 Alex Novet has [shown in the past](https://hockey-graphs.com/2019/08/12/expected-goals-model-with-pre-shot-movement-part-1-the-model/) that including passing data can indeed improve an expected goals model's accuracy, so we're going to lean into that quite a bit for this one.
 
 ![xg importance](https://github.com/danmorse314/Expected-Primary-Assists/blob/main/figures/xg%20model%20feature%20importance.png)
+*Fig. 2*
 
 The shooter's proximity to the net remains the most important feature, as is true with all other expected goals models in hockey that I can find. The angle to the net of the shot-taker is about as important as a new feature called "shooter movement." Shooter movement only has a value when a pass was immediately preceding the shot. It is definied as the distance between the shot location and the intended pass destination from the previous event.
 
@@ -64,6 +66,7 @@ The variables were randomly selected and the expected goals calculated 500 times
 With that all taken care of, we can now calculate the expected goals and assists of every pass & shot in this data, and compare it to the goals, primary assists, and secondary assists scored on the OHL's [official website](https://ontariohockeyleague.com/stats). I've narrowed it down to 5-on-5 stats as that's when the majority of the game is played, and other situations change the play style dramatically.
 
 ![gt table of stats](https://github.com/danmorse314/Expected-Primary-Assists/blob/main/figures/otters%20ev%20stats.png)
+*Fig. 3*
 
 It looks like we're measuring something close to primary assists! A linear model shows that xPA explains around 57% of the variance in an individual player's primary assist total at 5-on-5 and around 77% in all situations.
 
@@ -76,11 +79,13 @@ Among forwards on the Otters last year, Hayden Fowler stands out as someone who 
 Contextually, we can also use this as a stylistic measure. Plotting the xPA rate and the xG rate gives us a good idea of which players prefer to shoot from dangerous areas and which prefer to pass.
 
 ![fwds style](https://github.com/danmorse314/Expected-Primary-Assists/blob/main/figures/forward%20styles.png)
+*Fig. 4*
 
 The Otters' leading goal scorer (both in expected and observed goals) was Chad Yetman. Yetman was also the 2nd least likely forward to pass into dangerous areas on the team. Meanwhile, his frequent linemate Maxim Golod was on the opposite end of the spectrum, opting to pass more often than all but one other forward on the team. The pair playing on the same line produced the most goals on the team last year, with Golod netting the primary assist on nearly half of Yetman's goals at even strength.
 
 ![yetman alluvial](https://github.com/danmorse314/Expected-Primary-Assists/blob/main/figures/yetman%20alluvial.png)
+*Fig. 5*
 
-Coaches frequently attempt to make forward lines with good chemistry. A breakdown like one in Fig. 3 could aid in that search, as we've already seen that pairing a player whose game is favored by xPA with a player who looks great by xG can lead to a winning combination. Based on this data, the play styles of Hayden Fowler and Elias Cohen should mesh very well together. Giving them more playing time together should lead to more high-danger shots by Cohen on high-danger passes from Fowler.
+Coaches frequently attempt to make forward lines with good chemistry. A breakdown like one in Fig. 4 could aid in that search, as we've already seen that pairing a player whose game is favored by xPA with a player who looks great by xG can lead to a winning combination. Based on this data, the play styles of Hayden Fowler and Elias Cohen should mesh very well together. Giving them more playing time together should lead to more high-danger shots by Cohen on high-danger passes from Fowler.
 
 In the future, the passing model could use more fine tuning. Perhaps adding a new feature like whether or not the pass was sent through traffic would give it a boost. As of now, the xPA model can already be helpful in evaluating different player styles. With year-over-year testing, it will also benefit player evaluation once we determine which elements are skill-based and which are likely to regress towards the mean.
