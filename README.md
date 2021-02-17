@@ -23,7 +23,7 @@ Calculating the likelihood of a pass leading to a goal is essentially a two-part
 
 ### Pass Completion Probability
 
-For the first part, we'll construct an expected completion model similar to what you'll find in the [NFL analytics community](https://www.opensourcefootball.com/posts/2020-09-28-nflfastr-ep-wp-and-cp-models/)^[https://www.opensourcefootball.com/posts/2020-09-28-nflfastr-ep-wp-and-cp-models/]. I utilized extreme gradient boosting (xgboost) for this model. The features selected were some basic game information like time remaining, strength state, and score differential, along with various classifications of some of the more common types of passes. The hyperparameters were identified using 5-fold cross validation before being input into the final model.
+For the first part, we'll construct an expected completion model similar to what you'll find in the [NFL analytics community](https://www.opensourcefootball.com/posts/2020-09-28-nflfastr-ep-wp-and-cp-models/). I utilized extreme gradient boosting (xgboost) for this model. The features selected were some basic game information like time remaining, strength state, and score differential, along with various classifications of some of the more common types of passes. The hyperparameters were identified using 5-fold cross validation before being input into the final model.
 
 ![pass importance matrix](https://github.com/danmorse314/Expected-Primary-Assists/blob/main/figures/pass%20model%20feature%20importance.png)
 
@@ -43,7 +43,7 @@ The shooter's proximity to the net remains the most important feature, as is tru
 
 Pass distance (for shots with a pass immediately prior) and whether or not the shot was a one-timer also prove to be important factors. As they aren't publicly available in full right now, these aren't normally included in public xGoal models.
 
-The AUC (area under the curve) evaluation of the cross-validation results is better than that of the Evolving Wild xG model (0.828 vs EW's 0.782)^[https://rpubs.com/evolvingwild/395136/], which is encouraging in that it appears our new features are aiding the model's accuracy. But it's important to remember that this is only a 40-game sample and could be prone to over-fitting. Testing on future seasons would give us a better idea if this is the case.
+The AUC (area under the curve) evaluation of the cross-validation results is better than that of the Evolving Wild xG model (0.828 vs EW's 0.782), which is encouraging in that it appears our new features are aiding the model's accuracy. But it's important to remember that this is only a 40-game sample and could be prone to over-fitting. Testing on future seasons would give us a better idea if this is the case.
 
 We now have the two pieces we originally set out for when searching for xPA: pass completion probability and expected goals. By multiplying the pass completion probability by the expected goals value of the following shot, we can get an estimate of the likelihood of a primary assist being awarded to the passer. But what about passes to dangerous areas that are, for whatever reason, incomplete and don't have a shot recorded afterwards? Or passes that are completed but the recipient decides not to shoot?
 
@@ -61,7 +61,7 @@ The variables were randomly selected and the expected goals calculated 500 times
 
 ##    Results
 
-With that all taken care of, we can now calculate the expected goals and assists of every pass & shot in this data, and compare it to the goals, primary assists, and secondary assists scored on the OHL's [official website](https://ontariohockeyleague.com/stats)^[https://ontariohockeyleague.com/stats]. I've narrowed it down to 5-on-5 stats as that's when the majority of the game is played, and other situations change the play style dramatically.
+With that all taken care of, we can now calculate the expected goals and assists of every pass & shot in this data, and compare it to the goals, primary assists, and secondary assists scored on the OHL's [official website](https://ontariohockeyleague.com/stats). I've narrowed it down to 5-on-5 stats as that's when the majority of the game is played, and other situations change the play style dramatically.
 
 ![gt table of stats](https://github.com/danmorse314/Expected-Primary-Assists/blob/main/figures/otters%20ev%20stats.png)
 
