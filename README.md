@@ -1,4 +1,6 @@
-# "Quantifying offensive passing ability with Expected Primary Assists"
+# Quantifying offensive passing ability with Expected Primary Assists
+Dan Morse
+3/5/2021
 
 ## Introduction
 
