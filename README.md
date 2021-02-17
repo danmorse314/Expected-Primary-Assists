@@ -23,7 +23,7 @@ Calculating the likelihood of a pass leading to a goal is essentially a two-part
 
 For the first part, we'll construct an expected completion model similar to what you'll find in the [NFL analytics community](https://www.opensourcefootball.com/posts/2020-09-28-nflfastr-ep-wp-and-cp-models/)^[https://www.opensourcefootball.com/posts/2020-09-28-nflfastr-ep-wp-and-cp-models/]. I utilized extreme gradient boosting (xgboost) for this model. The features selected were some basic game information like time remaining, strength state, and score differential, along with various classifications of some of the more common types of passes. The hyperparameters were identified using 5-fold cross validation before being input into the final model.
 
-![pass importance matrix](file link)
+![pass importance matrix](https://github.com/danmorse314/Expected-Primary-Assists/blob/main/figures/defense%20play%20style.png)
 
 The distance traveled by the intended pass is far and away the most important feature in this model. Strength state, which in this case is simply number of skaters for the passing team minus the number of skaters for the opposing team (ie a 5-on-4 powerplay yields a strength of 1). Whether a pass was direct or indirect (indirect being passes off the boards) was also more important than all of our pass classifications. The most significant classification came with our slot pass, which makes sense as it's generally more difficult to find open space right in front of the net to get a pass through/ According to the final model, passes across the slot averaged a 54.2% completion probability vs 73.7% for all other passes.
 
