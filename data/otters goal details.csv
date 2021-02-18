@@ -1,0 +1,294 @@
+date,g,a1,a2,strength
+2019-09-20,Maxim Golod,Danial Singer,Chad Yetman,ev
+2019-09-20,Quinton Byfield,NA,NA,ev
+2019-09-20,Quinton Byfield,Chase Stillman,Emmett Serensits,ev
+2019-09-20,Kurtis Henry,Austen Swankler,Brendan Hoffmann,ev
+2019-09-20,Daniel D'Amato,Alex Gritz,Jack Duff,ev
+2019-09-20,Hayden Fowler,Jacob Golden,Brendan Sellan,ev
+2019-09-20,Connor Lockhart,NA,NA,en
+2019-09-21,Danial Singer,Jamie Drysdale,NA,ev
+2019-09-21,Chad Yetman,Maxim Golod,Kurtis Henry,ev
+2019-09-21,Bradley Johnson,George Diaco,NA,ev
+2019-09-21,Kade Landry,Arthur Kaliyev,Avery Hayes,ev
+2019-09-21,Emmett Sproule,Jamie Drysdale,Austen Swankler,ev
+2019-09-21,Daniel D'Amato,Jamie Drysdale,Elias Cohen,ev
+2019-09-21,Maxim Golod,Connor Lockhart,Jamie Drysdale,pp
+2019-09-21,Hayden Fowler,Maxim Golod,NA,pp
+2019-09-21,Avery Hayes,Nathan Staios,Liam Van Loon,pp
+2019-09-21,Chad Yetman,NA,NA,sh
+2019-09-21,Jamie Drysdale,Elias Cohen,Austen Swankler,ev
+2019-09-21,Arthur Kaliyev,NA,NA,ev
+2019-09-21,Avery Hayes,Ryan Winterton,Davis Young,ev
+2019-09-26,Hayden Fowler,NA,NA,ev
+2019-09-26,Luke Boka,Louka Henault,NA,ev
+2019-09-26,Tyler Angle,Cole Purboo,Ruben Rafkin,ev
+2019-10-04,Maxim Golod,Jamie Drysdale,Luke Beamish,pp
+2019-10-04,DJ King,Damien Giroux,Ethan Cardwell,ev
+2019-10-04,Danny Katic,Jake Goldowski,NA,ev
+2019-10-04,Damien Giroux,Cole Perfetti,Ethan Cardwell,ev
+2019-10-04,Jake Goldowski,Camaryn Baber,DJ Busdeker,ev
+2019-10-04,Maxim Golod,Jamie Drysdale,Austen Swankler,pp
+2019-10-11,Arthur Kaliyev,Jan Jenik,NA,ev
+2019-10-11,Arthur Kaliyev,Liam Van Loon,Jan Jenik,ev
+2019-10-11,Arthur Kaliyev,Logan Morrison,Jan Jenik,pp
+2019-10-11,Arthur Kaliyev,Jan Jenik,Liam Van Loon,ev
+2019-10-11,Chad Yetman,Brendan Sellan,Jacob Golden,ev
+2019-10-12,Austen Swankler,Brendan Sellan,Jack Duff,ev
+2019-10-12,Ty Collins,Jacob Roach,Pavel Gogolev,pp
+2019-10-12,Austen Swankler,Maxim Golod,Jamie Drysdale,ev
+2019-10-12,Emmett Sproule,Hayden Fowler,Chad Yetman,ev
+2019-10-12,Chad Yetman,Jack Duff,Hayden Fowler,ev
+2019-10-17,Kyen Sopa,Oliver Castleman,Mason Howard,ev
+2019-10-17,Chad Yetman,Maxim Golod,Jamie Drysdale,pp
+2019-10-17,Jamie Drysdale,Jack Duff,Hayden Fowler,ev
+2019-10-17,Brendan Hoffmann,Danial Singer,Noah Sedore,ev
+2019-10-17,Lucas Theriault,AJ Cook,Drew Hunter,ev
+2019-10-17,Jonah De Simone,Akil Thomas,NA,ev
+2019-10-17,Jamie Drysdale,Connor Lockhart,NA,ev
+2019-10-17,Mathew MacDougall,Maxim Golod,Luke Beamish,ev
+2019-10-17,Emmett Sproule,Chad Yetman,Hayden Fowler,en
+2019-10-17,Danial Singer,Connor Lockhart,NA,ev
+2019-10-18,Brendan Sellan,Jamie Drysdale,NA,ev
+2019-10-18,Cam Hillis,Pavel Gogolev,Josh Wainman,ev
+2019-10-18,Chad Yetman,Emmett Sproule,NA,ev
+2019-10-18,Pavel Gogolev,Cedric Ralph,Cam Hillis,ev
+2019-10-18,Pavel Gogolev,Cam Hillis,Luka Profaca,ev
+2019-10-18,Jamie Drysdale,Jack Duff,Maxim Golod,ev
+2019-10-18,Matthew Papais,Ben McFarlane,NA,ev
+2019-10-18,Ty Collins,Zack Terry,Luka Profaca,ev
+2019-10-18,Cam Hillis,Michael Bianconi,Pavel Gogolev,ev
+2019-10-18,Daniel D'Amato,Cameron Morton,Connor Lockhart,ev
+2019-10-18,Maxim Golod,Brendan Hoffmann,Mathew MacDougall,ev
+2019-10-18,Cam Hillis,Eric Uba,NA,en
+2019-10-19,Thomas Harley,NA,NA,ev
+2019-10-19,Hayden Fowler,Kurtis Henry,Chad Yetman,ev
+2019-10-19,Keean Washkurak,Thomas Harley,Ole Bjorgvik-Holm,ev
+2019-10-19,Chad Yetman,Maxim Golod,Hayden Fowler,ev
+2019-10-23,Daniel D'Amato,Jamie Drysdale,Brendan Sellan,ev
+2019-10-23,Cedric Ralph,Cam Hillis,Daniil Chayka,pp
+2019-10-23,Ty Collins,Cam Hillis,Pavel Gogolev,ev
+2019-10-23,Chad Yetman,Austen Swankler,Maxim Golod,pp
+2019-10-23,Jack Duff,Brendan Hoffmann,Noah Sedore,ev
+2019-10-23,Andrei Bakanov,Cedric Ralph,NA,ev
+2019-10-26,Chad Yetman,Maxim Golod,Hayden Fowler,ev
+2019-10-26,Connor McMichael,Cole Tymkin,Luke Evangelista,ev
+2019-10-26,Danial Singer,Hayden Fowler,NA,ev
+2019-10-26,Hayden Fowler,Austen Swankler,Jamie Drysdale,pp
+2019-10-26,Jonathan Gruden,Luke Evangelista,Nathan Dunkley,ev
+2019-10-26,Daniel D'Amato,Austen Swankler,Emmett Sproule,ev
+2019-10-26,Antonio Stranges,Connor McMichael,Liam Foudy,ev
+2019-10-26,Antonio Stranges,Cole Tymkin,Billy Moskal,ev
+2019-10-26,Emmett Sproule,NA,NA,ev
+2019-10-26,Connor McMichael,Josh Nelson,Liam Foudy,ev
+2019-11-09,Hayden Fowler,Maxim Golod,Danial Singer,pp
+2019-11-09,Austen Swankler,NA,NA,ev
+2019-11-09,Maxim Golod,Jamie Drysdale,Emmett Sproule,ev
+2019-11-09,Danial Singer,Hayden Fowler,NA,ev
+2019-11-09,Nicholas Porco,Tyson Foerster,Ryan Del Monte,ev
+2019-11-09,Luke Bignell,Jason Willms,Nicholas Porco,ev
+2019-11-15,Brendan Sellan,Emmett Sproule,Jamie Drysdale,ev
+2019-11-15,Jean-Luc Foudy,Curtis Douglas,Louka Henault,pp
+2019-11-15,Will Cuylle,Cole Purboo,Egor Afanasyev,pp
+2019-11-15,Daniel D'Amico,Curtis Douglas,Jean-Luc Foudy,ev
+2019-11-15,Austen Swankler,NA,NA,ev
+2019-11-15,Chad Yetman,Kurtis Henry,Hayden Fowler,ev
+2019-11-15,Connor Corcoran,Daniel D'Amico,Curtis Douglas,ev
+2019-11-15,Tyler Angle,Egor Afanasyev,Cole Purboo,ev
+2019-11-15,Emmett Sproule,Cameron Morton,Austen Swankler,ev
+2019-11-15,Chad Yetman,Drew Hunter,Maxim Golod,pp
+2019-11-15,Jack Duff,Emmett Sproule,Austen Swankler,ev
+2019-11-15,Curtis Douglas,Connor Corcoran,Egor Afanasyev,pp
+2019-11-15,Connor Corcoran,Egor Afanasyev,Tyler Angle,ev
+2019-11-17,Maxim Golod,Chad Yetman,NA,pp
+2019-11-17,Nicholas Canade,Keean Washkurak,Ethan Del Mastro,ev
+2019-11-17,Nicholas Canade,Keean Washkurak,NA,ev
+2019-11-17,Daniel D'Amato,Drew Hunter,Brendan Hoffmann,ev
+2019-11-17,Liam Ham,James Hardie,Aidan Prueter,ev
+2019-11-21,Philip Tomasino,Ivan Lodnia,Andrew Bruder,pp
+2019-11-21,Andrew Bruder,Akil Thomas,Adrien Beraldo,pp
+2019-11-21,Kyen Sopa,Jackson Doherty,Philip Tomasino,ev
+2019-11-21,Kurtis Henry,Cameron Morton,Chad Yetman,ev
+2019-11-21,Connor Lockhart,Daniel D'Amato,Austen Swankler,ev
+2019-11-21,Jake Uberti,Ivan Lodnia,Akil Thomas,ev
+2019-11-21,Emmett Sproule,Drew Hunter,Daniel Murphy,pp
+2019-11-21,Daniel D'Amato,Drew Hunter,Austen Swankler,pp
+2019-11-22,Chad Yetman,Jamie Drysdale,Maxim Golod,pp
+2019-11-22,Brendan Sellan,Jamie Drysdale,Elias Cohen,ev
+2019-11-22,Chad Yetman,Maxim Golod,Jamie Drysdale,pp
+2019-11-22,Brett Neumann,Oliver Suni,NA,ev
+2019-11-22,Oliver Suni,Brett Neumann,NA,ev
+2019-11-22,Chad Yetman,Jack Duff,Jamie Drysdale,ev
+2019-12-08,Nolan Burke,NA,NA,ev
+2019-12-08,Drew Hunter,Chad Yetman,Hayden Fowler,ev
+2019-12-08,Noah Sedore,Danial Singer,Brendan Kischnick,ev
+2019-12-08,Eric Hjorth,Ryan McGregor,Jacob Perreault,pp
+2019-12-08,Ryan Roth,Anthony Tabak,Jamieson Rees,ev
+2019-12-08,Ryan Roth,Colton Kammerer,Jamieson Rees,ev
+2019-12-08,Jamieson Rees,Anthony Tabak,NA,sh
+2019-12-08,Justin Nolet,Joseph Mack,NA,ev
+2019-12-08,Brendan Hoffmann,Daniel D'Amato,Cameron Morton,ev
+2019-12-13,Elias Cohen,Austen Swankler,Drew Hunter,ev
+2019-12-13,Hayden Fowler,Connor Lockhart,Kurtis Henry,ev
+2019-12-13,Chad Yetman,Connor Lockhart,Hayden Fowler,ev
+2019-12-13,Shane Bulitka,Macauley Carson,Adam Samuelsson,sh
+2019-12-13,Kurtis Henry,Connor Lockhart,NA,pp
+2019-12-13,Daniel D'Amato,Brendan Hoffmann,NA,ev
+2019-12-13,Cameron Morton,Maxim Golod,NA,ev
+2019-12-13,Peter Stratis,Macauley Carson,Emmett Serensits,ev
+2019-12-13,Macauley Carson,Isaak Phillips,Owen Robinson,pp
+2019-12-13,David Levin,Kalle Loponen,Blake Murray,pp
+2019-12-13,Kurtis Henry,NA,NA,en
+2019-12-15,Zack Trott,NA,NA,ev
+2019-12-15,Drew Hunter,Danial Singer,Noah Sedore,ev
+2019-12-15,Danial Singer,Emmett Sproule,NA,ev
+2019-12-15,Elias Cohen,Maxim Golod,NA,ev
+2019-12-15,Maxim Golod,Kurtis Henry,NA,ev
+2019-12-15,Alex Johnston,Marc Boudreau,Drew Wawrow,ev
+2019-12-15,Connor Lockhart,Hayden Fowler,Brendan Kischnick,en
+2019-12-29,Greg Meireles,Justin MacPherson,NA,sh
+2019-12-29,Greg Meireles,Liam Hawel,Axel Bergkvist,pp
+2019-12-29,Liam Hawel,Greg Meireles,Mike Petizian,ev
+2019-12-29,Francesco Pinelli,Declan McDonnell,Ryan Stepien,ev
+2019-12-29,Jesse Fishman,Joseph Serpa,Graham Dickerson,ev
+2019-12-29,Elias Cohen,Maxim Golod,Austen Swankler,ev
+2019-12-29,Emmett Sproule,Brendan Kischnick,Noah Sedore,ev
+2019-12-29,Donovan Sebrango,Declan McDonnell,Ryan Stepien,ev
+2019-12-31,Francesco Pinelli,Michael Vukojevic,Reid Valade,pp
+2019-12-31,Mike Petizian,Liam Hawel,Greg Meireles,ev
+2019-12-31,Brendan Hoffmann,Daniel D'Amato,Brendan Sellan,ev
+2019-12-31,Jonathan Yantsis,Reid Valade,Axel Bergkvist,ev
+2019-12-31,Declan McDonnell,Francesco Pinelli,Ryan Stepien,ev
+2019-12-31,Jonathan Yantsis,Riley Damiani,NA,ev
+2019-12-31,Greg Meireles,Riley Damiani,NA,sh
+2020-01-03,Zayde Wisdom,Nick King,Dustin Hutton,ev
+2020-01-03,Danial Singer,Cameron Morton,Emmett Sproule,ev
+2020-01-03,Emmett Sproule,Danial Singer,Hayden Fowler,ev
+2020-01-03,Danial Singer,Chad Yetman,Drew Hunter,ev
+2020-01-03,Cameron Morton,Chad Yetman,Daniel D'Amato,ev
+2020-01-03,Shane Wright,Zayde Wisdom,NA,ev
+2020-01-03,Nick King,Dawson Baker,Justin Pringle,ev
+2020-01-03,Maxim Golod,Chad Yetman,NA,ev
+2020-01-03,Maxim Golod,Jacob Golden,Daniel D'Amato,ev
+2020-01-05,Mitchell Hoelscher,Brenden Sirizzotti,Jack Quinn,ev
+2020-01-05,Marco Rossi,Joseph Garreffa,Austen Keating,ev
+2020-01-05,Mitchell Hoelscher,Marco Rossi,Nikita Okhotyuk,ev
+2020-01-05,Marco Rossi,Austen Keating,NA,ev
+2020-01-05,Jack Beck,Jack Quinn,Mitchell Hoelscher,ev
+2020-01-11,Hayden Fowler,Kyen Sopa,Drew Hunter,ev
+2020-01-11,Ivan Lodnia,Oliver Castleman,NA,ev
+2020-01-11,Jamie Drysdale,Hayden Fowler,NA,pp
+2020-01-11,Maxim Golod,Jamie Drysdale,Chad Yetman,ev
+2020-01-11,AJ Cook,Ryan Campbell,Lucas Theriault,ev
+2020-01-11,Kyen Sopa,Hayden Fowler,Chad Yetman,en
+2020-01-12,Kyen Sopa,Hayden Fowler,Emmett Sproule,ev
+2020-01-12,Theo Hill,Brayden Guy,Eric Hjorth,ev
+2020-01-12,Brendan Hoffmann,Daniel D'Amato,Brendan Sellan,ev
+2020-01-12,Chad Yetman,Jamie Drysdale,Maxim Golod,ev
+2020-01-12,Brendan Hoffmann,Jacob Golden,Brendan Sellan,ev
+2020-01-12,Ryan McGregor,Peter Stratis,Sean Josling,pp
+2020-01-12,Austen Swankler,Jamie Drysdale,Maxim Golod,ev
+2020-01-12,Austen Swankler,Jacob Golden,NA,en
+2020-01-17,Sean Josling,Jacob Perreault,Peter Stratis,pp
+2020-01-17,Jacob Golden,Maxim Golod,NA,ev
+2020-01-17,Chad Yetman,Maxim Golod,Jamie Drysdale,pp
+2020-01-17,Daniel D'Amato,Maxim Golod,NA,sh
+2020-01-17,Ryan McGregor,Ty Voit,Jacob Perreault,ev
+2020-01-17,Theo Hill,Sean Josling,Ryan Roth,ev
+2020-01-17,Brendan Hoffmann,Daniel D'Amato,NA,ev
+2020-01-18,Ruben Rafkin,Luke Boka,Curtis Douglas,ev
+2020-01-18,Chad Yetman,Maxim Golod,Jamie Drysdale,pp
+2020-01-18,Curtis Douglas,NA,NA,ev
+2020-01-18,Kyen Sopa,Jamie Drysdale,Maxim Golod,pp
+2020-01-18,Kyle McDonald,Chris Playfair,NA,ev
+2020-01-18,Daniel D'Amico,Wyatt Johnston,Louka Henault,ev
+2020-01-18,Hayden Fowler,Kyen Sopa,NA,ev
+2020-01-31,Riley McCourt,Ethan Keppen,Cody Morgan,ev
+2020-01-31,Riley McCourt,Connor Roberts,Anthony Popovich,ev
+2020-01-31,Daniel D'Amato,Maxim Golod,Jacob Golden,sh
+2020-01-31,Austen Swankler,Jamie Drysdale,Jack Duff,ev
+2020-01-31,Brennan Othmann,Dennis Busby,Evgeniy Oksentyuk,ev
+2020-01-31,Maxim Golod,Austen Swankler,Jacob Golden,ev
+2020-01-31,Riley McCourt,Jake Durham,Cody Morgan,ev
+2020-02-05,Cedric Ralph,Keegan Stevenson,Pavel Gogolev,pp
+2020-02-05,Chad Yetman,Maxim Golod,Connor Lockhart,ev
+2020-02-05,Pavel Gogolev,NA,NA,ev
+2020-02-05,Connor Lockhart,Maxim Golod,NA,ev
+2020-02-05,Jacob Golden,Elias Cohen,Mathew MacDougall,ev
+2020-02-05,Chad Yetman,Maxim Golod,Kyen Sopa,en
+2020-02-07,Daniel D'Amato,Brendan Sellan,NA,ev
+2020-02-07,Cody Morgan,Vladislav Kolyachonok,Tyler Tucker,pp
+2020-02-07,Austen Swankler,Elias Cohen,Drew Hunter,ev
+2020-02-07,Brennan Othmann,Riley Piercey,NA,ev
+2020-02-07,Vladislav Kolyachonok,Evgeniy Oksentyuk,Emmet Pierce,ev
+2020-02-07,Ty Dellandrea,Jack Phibbs,NA,sh
+2020-02-07,Brendan Sellan,Drew Hunter,NA,pp
+2020-02-07,Maxim Golod,Connor Lockhart,NA,ev
+2020-02-07,Connor Roberts,Vladislav Kolyachonok,NA,ev
+2020-02-08,Brendan Hoffmann,NA,NA,ev
+2020-02-08,Kaleb Pearson,Sergey Popov,Sam Sedley,ev
+2020-02-08,Kaleb Pearson,Brady Lyle,Matthew Struthers,ev
+2020-02-08,Kaleb Lawrence,Barret Kirwin,Logan LeSage,ev
+2020-02-08,Andrew Perrott,Adam McMaster,NA,ev
+2020-02-08,Connor Lockhart,Kyen Sopa,Drew Hunter,pp
+2020-02-08,Brendan Sellan,Connor Lockhart,NA,ev
+2020-02-12,Josh Nelson,Victor Hadfield,Brandt Clarke,ev
+2020-02-12,Hayden Fowler,Kyen Sopa,Jacob Golden,pp
+2020-02-12,Kyen Sopa,Chad Yetman,NA,ev
+2020-02-12,Jacob Frasca,Nicholas Porco,NA,ev
+2020-02-12,Hayden Fowler,Chad Yetman,Jacob Golden,pp
+2020-02-12,Evan Vierling,Tyson Foerster,Nathan Allensen,ev
+2020-02-17,Daniel D'Amato,Brendan Sellan,Drew Hunter,ev
+2020-02-17,Kyen Sopa,Chad Yetman,Kurtis Henry,ev
+2020-02-17,Brendan Hoffmann,Brendan Sellan,NA,ev
+2020-02-17,Chad Yetman,Maxim Golod,Kyen Sopa,ev
+2020-02-21,Austen Swankler,Noah Sedore,Jack Duff,ev
+2020-02-21,Jonathan Yantsis,NA,NA,ev
+2020-02-21,Jamie Drysdale,Brendan Sellan,Daniel D'Amato,ev
+2020-02-21,Declan McDonnell,Serron Noel,Francesco Pinelli,ev
+2020-02-21,Francesco Pinelli,Donovan Sebrango,Isaac Langdon,ev
+2020-02-21,Riley Damiani,Serron Noel,Jonathan Yantsis,ev
+2020-02-21,Chad Yetman,Kurtis Henry,Maxim Golod,sh
+2020-02-23,Barret Kirwin,NA,NA,ev
+2020-02-23,Deni Goure,Adam McMaster,Aidan Dudas,ev
+2020-02-23,Austen Swankler,Connor Lockhart,Drew Hunter,pp
+2020-02-23,Barret Kirwin,Carter Robertson,Ethan Burroughs,ev
+2020-02-23,Elias Cohen,NA,NA,ev
+2020-02-23,Barret Kirwin,Aidan Dudas,NA,en
+2020-02-29,Jacob Golden,Chad Yetman,Maxim Golod,pp
+2020-02-29,David Campbell,Josh Currie,Christian Stevens,ev
+2020-02-29,Elias Cohen,Austen Swankler,Connor Lockhart,ev
+2020-02-29,Brandon Coe,Shane Bulitka,Avery Winslow,ev
+2020-02-29,Liam Arnsby,Nick Grima,Kyle Jackson,ev
+2020-02-29,Simon Rose,Brandon Coe,Shane Bulitka,ev
+2020-02-29,Shane Bulitka,Luke Moncada,Nick Grima,sh
+2020-02-29,Chad Yetman,NA,NA,ev
+2020-02-29,Maxim Golod,Chad Yetman,NA,ev
+2020-03-01,Maxim Golod,Chad Yetman,Kyen Sopa,ev
+2020-03-01,Ben Roger,Macx McCue,NA,ev
+2020-03-01,Jonathan Gruden,Alec Regula,NA,ev
+2020-03-01,Billy Moskal,Kirill Steklov,Liam Foudy,ev
+2020-03-01,Chad Yetman,Jamie Drysdale,Maxim Golod,pp
+2020-03-01,Hunter Skinner,Jonathan Gruden,Matvey Guskov,ev
+2020-03-01,Ryan Merkley,Markus Phillips,Liam Foudy,pp
+2020-03-01,Chad Yetman,Jack Duff,Maxim Golod,ev
+2020-03-01,Liam Foudy,Alec Regula,NA,en
+2020-03-04,Chad Yetman,Maxim Golod,Cameron Morton,ev
+2020-03-04,Daniil Chayka,Keegan Stevenson,Cedric Ralph,ev
+2020-03-04,Chad Yetman,Maxim Golod,NA,ev
+2020-03-04,Pavel Gogolev,Cam Hillis,Zack Terry,ev
+2020-03-04,Daniel D'Amato,NA,NA,ev
+2020-03-04,Brendan Sellan,Brendan Hoffmann,Daniel D'Amato,ev
+2020-03-04,Pavel Gogolev,Daniil Chayka,Fedor Gordeev,pp
+2020-03-07,Brendan Sellan,Drew Hunter,Jamie Drysdale,pp
+2020-03-07,Chad Yetman,Maxim Golod,Austen Swankler,ev
+2020-03-07,Brendan Sellan,Brendan Hoffmann,Jacob Golden,sh
+2020-03-07,Oliver Castleman,Cameron Butler,Ivan Lodnia,pp
+2020-03-07,Jackson Doherty,Andrew Bruder,NA,ev
+2020-03-07,Austen Swankler,Hayden Fowler,Jack Duff,en
+2020-03-08,Brendan Sellan,Daniel D'Amato,Jamie Drysdale,ev
+2020-03-08,Cole Coskey,Cole Perfetti,Ryan Suzuki,pp
+2020-03-08,Damien Giroux,Cole Perfetti,Cole Coskey,pp
+2020-03-08,Cole Perfetti,Ryan Suzuki,DJ King,ev
+2020-03-08,Chad Yetman,Austen Swankler,Jacob Golden,ev
+2020-03-08,Danil Antropov,Jake Goldowski,DJ King,ev
+2020-03-08,Hayden Fowler,Kyen Sopa,Austen Swankler,pp
