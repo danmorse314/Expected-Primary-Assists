@@ -47,7 +47,13 @@ Pass distance (for shots with a pass immediately prior) and whether or not the s
 
 The AUC (area under the curve) evaluation of the cross-validation results is better than that of the Evolving Wild xG model (0.828 vs EW's 0.782), which is encouraging in that it appears our new features are aiding the model's accuracy. But it's important to remember that this is only a 40-game sample and could be prone to over-fitting. Testing on future seasons would give us a better idea if this is the case.
 
-We now have the two pieces we originally set out for when searching for xPA: pass completion probability and expected goals. By multiplying the pass completion probability by the expected goals value of the following shot, we can get an estimate of the likelihood of a primary assist being awarded to the passer. But what about passes to dangerous areas that are, for whatever reason, incomplete and don't have a shot recorded afterwards? Or passes that are completed but the recipient decides not to shoot?
+We now have the two pieces we originally set out for when searching for xPA: pass completion probability and expected goals. We now have the two pieces we originally set out for when searching for xPA: pass completion probability and expected goals. We can combine to estimate the likelihood of a pass turning into a primary assist with the formula
+
+$$xPA = P(CP) * xG_2$$
+
+where $P(CP)$ is the probability of a completed pass and $xG_2$ is the expected goals of a shot from the receiver's location.
+
+But what about passes to dangerous areas that are, for whatever reason, incomplete and don't have a shot recorded afterwards? Or passes that are completed but the recipient decides not to shoot?
 
 We can account for these cases by calculating the expected goals value of *theoretical* shots taken after a pass. Our data just needs some small adjustments, and some educated guesses. We can adjust most of the variables fairly easily to account for the new phantom shot, but five others require some extra work:
 
