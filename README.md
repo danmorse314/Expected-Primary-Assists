@@ -23,7 +23,7 @@ Calculating the likelihood of a pass leading to a goal is essentially a two-part
 
 ### Pass Completion Probability
 
-For the first part, we'll construct an expected completion model similar to what you'll find in the [NFL analytics community](https://www.opensourcefootball.com/posts/2020-09-28-nflfastr-ep-wp-and-cp-models/). I utilized extreme gradient boosting (xgboost) for this model. The features selected were some basic game information like time remaining, strength state, and score differential, along with various classifications of some of the more common types of passes. The hyperparameters were identified using 5-fold cross validation before being input into the final model.
+For the first part, we'll construct an expected completion model similar to what you'll find in the [NFL analytics community](https://www.opensourcefootball.com/posts/2020-09-28-nflfastr-ep-wp-and-cp-models/). I utilized extreme gradient boosting from the R package [xgboost](https://www.rdocumentation.org/packages/xgboost) for this model. The features selected were some basic game information like time remaining, strength state, and score differential, along with various classifications of some of the more common types of passes. The hyperparameters were identified using 5-fold cross validation before being input into the final model.
 
 ![pass importance matrix](https://github.com/danmorse314/Expected-Primary-Assists/blob/main/figures/pass%20model%20feature%20importance.png)
 *Fig. 1*
