@@ -34,7 +34,7 @@ The distance traveled by the intended pass is far and away the most important fe
 
 Now that we've got a baseline to determine if a pass will be completed or not, we need to quantify how likely it is that a completed pass will lead directly to a goal. Enter: a new expected goals model.
 
-Expected goals models in the NHL are numerous, but one thing they all omit is passing data. Josh and Luke of [evolving-hockey.com](evolving-hockey.com) opted to include information from events preceding a shot, which captures some of the pre-shot movement, in their model. But the raw NHL data doesn't include passing data. Fortunately for us, the Big Data Cup does include pass data.
+Expected goals models in the NHL are numerous, but one thing they all omit is passing data. Josh and Luke of [evolving-hockey.com](evolving-hockey.com) opted to include information from events preceding a shot, which captures some of the pre-shot movement, in their model. But the raw NHL data doesn't include passing data. Fortunately for us, the Big Data Cup does.
 
 Alex Novet has [shown in the past](https://hockey-graphs.com/2019/08/12/expected-goals-model-with-pre-shot-movement-part-1-the-model/) that including passing data can indeed improve an expected goals model's accuracy, so we're going to lean into that quite a bit for this one.
 
