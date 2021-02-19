@@ -95,3 +95,7 @@ The Otters' leading goal scorer (both in expected and observed goals) was Chad Y
 Coaches frequently attempt to make forward lines with good chemistry. A breakdown like one in Fig. 4 could aid in that search, as we've already seen that pairing a player whose game is favored by xPA with a player who looks great by xG can lead to a winning combination. Based on this data, the play styles of Hayden Fowler and Elias Cohen should mesh very well together. Giving them more playing time together should lead to more high-danger shots by Cohen on high-danger passes from Fowler.
 
 In the future, the passing model could use more fine tuning. Perhaps adding a new feature like whether or not the pass was sent through traffic would give it a boost. As of now, the xPA model can already be helpful in evaluating different player styles. With year-over-year testing, it will also benefit player evaluation once we determine which elements are skill-based and which are likely to regress towards the mean.
+
+##  Appendix
+
+All the code behind the models and figures can be found [here](https://github.com/danmorse314/Expected-Primary-Assists/blob/main/bdc%20code.R) 
