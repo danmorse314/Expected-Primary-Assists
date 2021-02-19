@@ -49,9 +49,9 @@ The AUC (area under the curve) evaluation of the cross-validation results is bet
 
 We now have the two pieces we originally set out for when searching for xPA: pass completion probability and expected goals. We now have the two pieces we originally set out for when searching for xPA: pass completion probability and expected goals. We can combine to estimate the likelihood of a pass turning into a primary assist with the formula
 
-$$xPA = P(CP) * xG_2$$
+<img src="https://render.githubusercontent.com/render/math?math=xPA=P(CP)*xG_2">
 
-where $P(CP)$ is the probability of a completed pass and $xG_2$ is the expected goals of a shot from the receiver's location.
+where <img src="https://render.githubusercontent.com/render/math?math=P(CP)"> is the probability of a completed pass and <img src="https://render.githubusercontent.com/render/math?math=xG_2"> is the expected goals of a shot from the receiver's location.
 
 But what about passes to dangerous areas that are, for whatever reason, incomplete and don't have a shot recorded afterwards? Or passes that are completed but the recipient decides not to shoot?
 
