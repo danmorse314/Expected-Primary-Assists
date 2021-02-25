@@ -140,6 +140,48 @@ print(
   paste0("CV test AUC: ",round(max(pass_cv$evaluation_log$test_auc_mean), 4))
 )
 
+# get half season correlation information
+games <- bdc_data %>%
+  separate(home_team, into = c("home_city","home_nick"), remove = FALSE, sep = " ") %>%
+  separate(away_team, into = c("away_city","away_nick"), remove = FALSE, sep = " ") %>%
+  unite("game_id", c(game_date, away_nick, home_nick), sep = "_") %>%
+  group_by(game_id) %>%
+  summarize() %>%
+  ungroup() %>%
+  mutate(game_index = row_number())
+
+passes_all <- bdc_data %>%
+  left_join(pass_data_predict, by = "event_index") %>%
+  filter(!is.na(completion_probability)) %>%
+  mutate(complete_pass = ifelse(event == "Play", 1, 0)) %>%
+  separate(home_team, into = c("home_city","home_nick"), remove = FALSE, sep = " ") %>%
+  separate(away_team, into = c("away_city","away_nick"), remove = FALSE, sep = " ") %>%
+  unite("game_id", c(game_date, away_nick, home_nick), sep = "_") %>%
+  left_join(games, by = "game_id")
+
+passes_1h <- passes_all %>%
+  filter(game_index <= .5 * max(games$game_index)) %>%
+  group_by(player) %>%
+  summarize(
+    passes = n(),
+    cpox = mean(complete_pass) - mean(completion_probability),
+    .groups = "drop"
+    ) %>%
+  ungroup()
+
+passes_2h <- passes_all %>%
+  filter(game_index > .5 * max(games$game_index)) %>%
+  group_by(player) %>%
+  summarize(
+    next_passes = n(),
+    next_cpox = mean(complete_pass) - mean(completion_probability),
+    .groups = "drop"
+    ) %>%
+  ungroup() %>%
+left_join(passes_1h, by = "player")
+
+summary(lm(next_cpox ~ cpox, passes_2h))
+
 shot_data <- bdc_data %>%
   separate(clock, into = c("minutes","seconds","milliseconds"), sep = ":", remove = FALSE) %>%
   mutate(
