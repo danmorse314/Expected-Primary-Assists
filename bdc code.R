@@ -166,7 +166,7 @@ passes_1h <- passes_all %>%
     passes = n(),
     cpox = mean(complete_pass) - mean(completion_probability),
     .groups = "drop"
-    ) %>%
+  ) %>%
   ungroup()
 
 passes_2h <- passes_all %>%
@@ -176,11 +176,32 @@ passes_2h <- passes_all %>%
     next_passes = n(),
     next_cpox = mean(complete_pass) - mean(completion_probability),
     .groups = "drop"
-    ) %>%
+  ) %>%
   ungroup() %>%
-left_join(passes_1h, by = "player")
+  left_join(passes_1h, by = "player")
+
+# filter to players with significant amount of data points (arbitrary selection)
+min_passes <- min(c(.25 * max(passes_1h$passes),
+                .25 * max(passes_2h$next_passes)))
+
+passes_2h <- passes_2h %>%
+  filter(
+    passes >= min_passes &
+      next_passes >= min_passes
+  )
 
 summary(lm(next_cpox ~ cpox, passes_2h))
+# coef: 0.514
+# r.sq: 0.421
+
+ggplot(passes_2h, aes(cpox, next_cpox)) +
+  geom_smooth(method = lm) +
+  geom_point(alpha = .8, size = 4) +
+  theme_bw() +
+  labs(x = "1st half CPOx", y = "2nd half CPOx",
+       title = "CPOx is fairly predictive in-season",
+       subtitle = paste0("min. ",min_passes," passes in both half-seasons"),
+       caption = "chart: @danmorse_ | data: Stathletes")
 
 shot_data <- bdc_data %>%
   separate(clock, into = c("minutes","seconds","milliseconds"), sep = ":", remove = FALSE) %>%
