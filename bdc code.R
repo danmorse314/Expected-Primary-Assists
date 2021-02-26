@@ -264,8 +264,6 @@ p1 + p2 +
     subtitle = paste0("min. ",ceiling(min_passes)," passes in both half-seasons"),
                       caption = "chart: @danmorse_ | data: Stathletes" 
   )
-ggsave("C:/Users/danmo/Documents/R/Big Data Cup 2021/cpox in season correlation.png",
-       width = 6, height = 4)
 
 shot_data <- bdc_data %>%
   separate(clock, into = c("minutes","seconds","milliseconds"), sep = ":", remove = FALSE) %>%
