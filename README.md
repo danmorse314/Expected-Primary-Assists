@@ -28,7 +28,7 @@ For the first part, we'll construct an expected completion model similar to what
 ![pass importance matrix](https://github.com/danmorse314/Expected-Primary-Assists/blob/main/figures/pass%20model%20feature%20importance.png)
 *Fig. 1*
 
-The distance traveled by the intended pass is far and away the most important feature in this model. Strength state, which in this case is simply number of skaters for the passing team minus the number of skaters for the opposing team (ie a 5-on-4 powerplay yields a strength of 1). Whether a pass was direct or indirect (indirect being passes off the boards) was also more important than all of our pass classifications. The most significant classification came with our slot pass, which makes sense as it's generally more difficult to find open space right in front of the net to get a pass through/ According to the final model, passes across the slot averaged a 54.2% completion probability vs 73.7% for all other passes.
+Whether or not a pass targets a defenseman is the most important factor in predicting a pass completion. Generally, passes to defensemen are done at the blue line or while regrouping in your defensive zone, both high-completion probability situations. The pass distance and strength state are intuitively and empirically important. The most significant pass classification came with our slot pass, which makes sense as it's generally more difficult to find open space right in front of the net to get a pass through/ According to the final model, passes across the slot averaged a 54.7% completion probability vs 73.6% for all other passes.
 
 ### Expected Goals
 
@@ -45,7 +45,7 @@ The shooter's proximity to the net remains the most important feature, as is tru
 
 Pass distance (for shots with a pass immediately prior) and whether or not the shot was a one-timer also prove to be important factors. As they aren't publicly available in full right now, these aren't normally included in public xGoal models.
 
-The AUC (area under the curve) evaluation of the cross-validation results is better than that of the Evolving Wild xG model (0.828 vs EW's 0.782), which is encouraging in that it appears our new features are aiding the model's accuracy. But it's important to remember that this is only a 40-game sample and could be prone to over-fitting. Testing on future seasons would give us a better idea if this is the case.
+The AUC (area under the curve) evaluation of the cross-validation results is better than that of the Evolving Wild xG model (0.824 vs EW's 0.782), which is encouraging in that it appears our new features are aiding the model's accuracy. But it's important to remember that this is only a 40-game sample and could be prone to over-fitting. Testing on future seasons would give us a better idea if this is the case.
 
 We now have the two pieces we originally set out for when searching for xPA: pass completion probability and expected goals. We now have the two pieces we originally set out for when searching for xPA: pass completion probability and expected goals. We can combine to estimate the likelihood of a pass turning into a primary assist with the formula
 
@@ -76,13 +76,13 @@ With that all taken care of, we can now calculate the expected goals and assists
 
 It looks like we're measuring something close to primary assists! A linear model shows that xPA explains around 57% of the variance in an individual player's primary assist total at 5-on-5 and around 77% in all situations.
 
-One of the more noticable differences is in how stark a contrast there is between forwards and defensemen. Taking each player's expected primary assists per 100 passes made (xPA/100), the best defenseman on the team is still a less dangerous passer than the worst forward on the team. That makes sense considering defensemen are making a significant portion of their passes on the perimiter of the offensive zone, where the expected goals are low, while forwards send more passes to the middle or down low.
+One of the more noticable differences is in how stark a contrast there is between forwards and defensemen. Taking each player's expected primary assists per 100 passes made (xPA/100), the best defenseman on the team is still a less dangerous passer than the worst forward on the team, on a per pass basis. That makes sense considering defensemen are making a significant portion of their passes on the perimiter of the offensive zone, where the expected goals are low, while forwards send more passes to the middle or down low.
 
 On a contextual level, xPA/100 is measuring how "dangerous" a player's passes were on average.
 
-Among forwards on the Otters last year, Hayden Fowler stands out as someone who might warrant more attention. His xPA/100 was seconds on the team, but he only came away with 4 primary assists. The discrepency makes sense when you see his pass completion percentage over expectation (CPOx) is -8.4%. If we assume that will regress towards the mean next year, we could view Fowler as an under-the-radar player set for a breakout playmaker season. However, there is the chance that CPOx is a skill-based trait, which would mean that while he has an aggressive mindset when it comes to sending passes into dangerous areas, he's simply not very good at actually making the pass. Measuring the season-to-season correlation of this statistic in the future would help give us a better understanding of what to expect in future years.
+Jamie Drysdale, a top-10 NHL draft selection, deservedly garnered most of the attention on the blue line last year, and that's backed up by his expected goals (xG) & expected primary assists (xPA) numbers. What the xPA can show us here that might otherwise go unnoticed is that Drew Hunter was nearly as dangerous of a passer as Drysdale despite only notching one primary assist at even strength. His high completion percentage over expectation (CPOx) indicates he was completing his passes at a high rate, implying that the lack of primary assists was driven by bad shooting luck. CPOx does appear to measure a skill rather than variance, as the first half-season CPOx for players correlated well with their second half-season CPOx.^[for players with at least 190 passes in both half-seasons: correlation coefficient = 0.5, r-squared = 0.476]
 
-Contextually, we can also use this as a stylistic measure. Plotting the xPA rate and the xG rate gives us a good idea of which players prefer to shoot from dangerous areas and which prefer to pass.
+We can also use this as a stylistic measure. Plotting the xPA rate and the xG rate gives us a good idea of which players prefer to shoot from dangerous areas and which prefer to pass.
 
 ![fwds style](https://github.com/danmorse314/Expected-Primary-Assists/blob/main/figures/forward%20styles.png)
 *Fig. 4*
@@ -92,9 +92,11 @@ The Otters' leading goal scorer (both in expected and observed goals) was Chad Y
 ![yetman alluvial](https://github.com/danmorse314/Expected-Primary-Assists/blob/main/figures/yetman%20alluvial.png)
 *Fig. 5*
 
-Coaches frequently attempt to make forward lines with good chemistry. A breakdown like one in Fig. 4 could aid in that search, as we've already seen that pairing a player whose game is favored by xPA with a player who looks great by xG can lead to a winning combination. Based on this data, the play styles of Hayden Fowler and Elias Cohen should mesh very well together. Giving them more playing time together should lead to more high-danger shots by Cohen on high-danger passes from Fowler.
+Coaches frequently attempt to make forward lines with good chemistry. A breakdown like one in Fig. 3 could aid in that search, as we've already seen that pairing a player whose game is favored by xPA with a player who looks great by xG can lead to a winning combination. Based on this data, getting Hayden Fowler on a line with Connor Lockhart could be an idea worth exploring. Lockhart's xG rate isn't all that impressive, but his xPA rate makes it clear that if he's anywhere near the net he's opting for a shot over a pass. Letting him center a line with Fowler, the second-most aggressive passer on the team, should set up Lockhart in more favorable shooting situations.
 
-In the future, the passing model could use more fine tuning. Perhaps adding a new feature like whether or not the pass was sent through traffic would give it a boost. As of now, the xPA model can already be helpful in evaluating different player styles. With year-over-year testing, it will also benefit player evaluation once we determine which elements are skill-based and which are likely to regress towards the mean.
+##  Conclusions
+
+Expected primary assists did help us find at least one underappreciated player in Drew Hunter. Testing this across an entire junior league has the potential to highlight more of these potential late-round prospects in the NHL draft. They can also help classify play styles for any player in the league fairly easily, which could be of use in identifying trade-deadline acquisition targets and in finding new forward line combinations.
 
 ##  Appendix
 
