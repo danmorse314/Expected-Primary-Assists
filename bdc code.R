@@ -1,7 +1,10 @@
+# load required packages
 library(tidyverse)
 library(xgboost, exclude = "slice")
+# for visualizations
 library(gt)
 library(ggalluvial)
+# scales package also required, explicitly called here
 
 # read scouting data
 bdc_data <- read_csv("https://raw.githubusercontent.com/bigdatacup/Big-Data-Cup-2021/main/hackathon_scouting.csv",
@@ -890,7 +893,6 @@ box_ev %>%
   labs(title = "Erie Otters play styles", x = "xPA/100 passes", y = "xG/10 shots",
        subtitle = "Forwards, min. 100 passes, 5-on-5 situations",
        caption = "chart: @danmorse_ | data: Stathletes")
-ggsave("C:/Users/danmo/Documents/R/Big Data CUp 2021/forward styles.png",width=6,height=4)
 
 # the process of Chad Yetman's goals
 yetman_goals <- read_csv(url("https://raw.githubusercontent.com/danmorse314/bdc21/main/otters%20goal%20details.csv"),
