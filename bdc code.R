@@ -1,10 +1,7 @@
-# load required packages
 library(tidyverse)
 library(xgboost, exclude = "slice")
-# for visualizations
 library(gt)
 library(ggalluvial)
-# scales package also required, explicitly called here
 
 # read scouting data
 bdc_data <- read_csv("https://raw.githubusercontent.com/bigdatacup/Big-Data-Cup-2021/main/hackathon_scouting.csv",
@@ -508,55 +505,101 @@ sample_movement <- sample_shots %>%
 # creating phantom shots
 inc_shots_predict <- NULL
 
+inc_shots_i <- shot_data %>%
+  filter(
+    event == "Incomplete Pass" |
+      #  add completed passes that didn't lead directly to shot
+      #  we'll make the recipient shoot now
+      (event == "Pass" & next_event != "Shot")
+  ) %>%
+  # filter to just passes heading past center ice
+  filter(x_coordinate_2 > 100) %>%
+  mutate(
+    distance = # distance to net from intended pass destination
+      abs(sqrt((x_coordinate_2 - 189)^2 + (y_coordinate_2 - 42.5)^2)),
+    theta = # from intended pass destination
+      abs(atan((42.5 - y_coordinate_2) / (189 - x_coordinate_2)) * (180 / pi)), # from evolvingwild
+    theta = ifelse(x_coordinate_2 > 189, 180 - theta, theta), # fix behind the net angles
+    i5v4 = ifelse(team_skaters == 5 & opponent_skaters == 4, 1, 0),
+    i5v3 = ifelse(team_skaters == 5 & opponent_skaters == 3, 1, 0),
+    i6v5 = ifelse(team_skaters == 6 & opponent_skaters == 5, 1, 0),
+    i6v4 = ifelse(team_skaters == 6 & opponent_skaters == 4, 1, 0),
+    i5v5 = ifelse(team_skaters == 5 & opponent_skaters == 5, 1, 0),
+    i4v4 = ifelse(team_skaters == 4 & opponent_skaters == 4, 1, 0),
+    i3v3 = ifelse(team_skaters == 3 & opponent_skaters == 3, 1, 0),
+    i4v5 = ifelse(team_skaters == 4 & opponent_skaters == 5, 1, 0),
+    i3v5 = ifelse(team_skaters == 3 & opponent_skaters == 5, 1, 0),
+    i5v6 = ifelse(team_skaters == 5 & opponent_skaters == 6, 1, 0),
+    # move previous events back one spot because the new event is a shot
+    prev_event_5 = prev_event_4,
+    prev_event_4 = prev_event_3,
+    prev_event_3 = prev_event_2,
+    prev_event_2 = prev_event,
+    prev_event = "Pass",
+    previous_passes = case_when(
+      # this should be fine since we've already moved the events back a spot
+      prev_event == "Pass" & prev_event_2 == "Pass" & prev_event_3 == "Pass" &
+        prev_event_4 == "Pass" & prev_event_5 == "Pass" ~ 5,
+      prev_event == "Pass" & prev_event_2 == "Pass" & prev_event_3 == "Pass" &
+        prev_event_4 == "Pass" & prev_event_5 != "Pass" ~ 4,
+      prev_event == "Pass" & prev_event_2 == "Pass" & prev_event_3 == "Pass" &
+        prev_event_4 != "Pass" ~ 3,
+      prev_event == "Pass" & prev_event_2 == "Pass" & prev_event_3 != "Pass" ~ 2,
+      prev_event == "Pass" & prev_event_2 != "Pass" ~ 1,
+      prev_event != "Pass" ~ 0
+    ),
+    prev_x_coordinate_5 = prev_x_coordinate_4,
+    prev_x_coordinate_4 = prev_x_coordinate_3,
+    prev_x_coordinate_3 = prev_x_coordinate_2,
+    prev_x_coordinate_2 = prev_x_coordinate,
+    prev_x_coordinate = x_coordinate,
+    prev_x_coordinate_dest = x_coordinate_2,
+    prev_y_coordinate_5 = prev_y_coordinate_4,
+    prev_y_coordinate_4 = prev_y_coordinate_3,
+    prev_y_coordinate_3 = prev_y_coordinate_2,
+    prev_y_coordinate_2 = prev_y_coordinate,
+    prev_y_coordinate = y_coordinate,
+    prev_y_coordinate_dest = y_coordinate_2,
+    # adjust the time remaining back a spot
+    prev_period_seconds_2 = prev_period_seconds,
+    prev_period_seconds = period_seconds_remaining,
+    pass_distance = 
+      abs(sqrt((prev_x_coordinate - prev_x_coordinate_dest)^2 +
+                 (prev_y_coordinate - prev_y_coordinate_dest)^2)
+      ),
+    pass_behind_net = ifelse(
+      prev_event == "Pass" & prev_x_coordinate > 189, 1, 0
+    ),
+    pass_slot = ifelse(
+      prev_event == "Pass" &
+        # 46 ft to top of the circles in the offensive zone
+        prev_x_coordinate > 154 &
+        # only count passes that cross from one side of the net to the other side
+        ((prev_y_coordinate < 42.5 & prev_y_coordinate_dest > 42.5) |
+           (prev_y_coordinate > 42.5 & prev_y_coordinate_dest < 42.5)),
+      1, 0
+    ),
+    pass_stretch = ifelse(
+      # passes from own defensive zone to someone within 5ft of offensive zone
+      # arbitrary choice
+      prev_event == "Pass" & prev_x_coordinate < 75 & prev_x_coordinate_dest > 120,
+      1, 0
+    ),
+    # previous event is always pass in these cases
+    prev_pass = 1,
+    prev_recovery = 0,
+    prev_shot = 0,
+    prev_takeaway = 0,
+    prev_zone_entry = 0
+  )
+
 set.seed(487)
 
 for(i in 1:500){
   tictoc::tic()
   print(paste0("Getting randomized shot inputs, ",i," of 5..."))
-  
-  inc_shots <- shot_data %>%
-    filter(
-      event == "Incomplete Pass" |
-        #  add completed passes that didn't lead directly to shot
-        #  we'll make the recipient shoot now
-        (event == "Pass" & next_event != "Shot")
-    ) %>%
-    # filter to just passes heading past center ice
-    filter(x_coordinate_2 > 100) %>%
+  inc_shots <- inc_shots_i %>%
     mutate(
-      distance = # distance to net from intended pass destination
-        abs(sqrt((x_coordinate_2 - 189)^2 + (y_coordinate_2 - 42.5)^2)),
-      theta = # from intended pass destination
-        abs(atan((42.5 - y_coordinate_2) / (189 - x_coordinate_2)) * (180 / pi)), # from evolvingwild
-      theta = ifelse(x_coordinate_2 > 189, 180 - theta, theta), # fix behind the net angles
-      i5v4 = ifelse(team_skaters == 5 & opponent_skaters == 4, 1, 0),
-      i5v3 = ifelse(team_skaters == 5 & opponent_skaters == 3, 1, 0),
-      i6v5 = ifelse(team_skaters == 6 & opponent_skaters == 5, 1, 0),
-      i6v4 = ifelse(team_skaters == 6 & opponent_skaters == 4, 1, 0),
-      i5v5 = ifelse(team_skaters == 5 & opponent_skaters == 5, 1, 0),
-      i4v4 = ifelse(team_skaters == 4 & opponent_skaters == 4, 1, 0),
-      i3v3 = ifelse(team_skaters == 3 & opponent_skaters == 3, 1, 0),
-      i4v5 = ifelse(team_skaters == 4 & opponent_skaters == 5, 1, 0),
-      i3v5 = ifelse(team_skaters == 3 & opponent_skaters == 5, 1, 0),
-      i5v6 = ifelse(team_skaters == 5 & opponent_skaters == 6, 1, 0),
-      # move previous events back one spot because the new event is a shot
-      prev_event_5 = prev_event_4,
-      prev_event_4 = prev_event_3,
-      prev_event_3 = prev_event_2,
-      prev_event_2 = prev_event,
-      prev_event = "Pass",
-      previous_passes = case_when(
-        # this should be fine since we've already moved the events back a spot
-        prev_event == "Pass" & prev_event_2 == "Pass" & prev_event_3 == "Pass" &
-          prev_event_4 == "Pass" & prev_event_5 == "Pass" ~ 5,
-        prev_event == "Pass" & prev_event_2 == "Pass" & prev_event_3 == "Pass" &
-          prev_event_4 == "Pass" & prev_event_5 != "Pass" ~ 4,
-        prev_event == "Pass" & prev_event_2 == "Pass" & prev_event_3 == "Pass" &
-          prev_event_4 != "Pass" ~ 3,
-        prev_event == "Pass" & prev_event_2 == "Pass" & prev_event_3 != "Pass" ~ 2,
-        prev_event == "Pass" & prev_event_2 != "Pass" ~ 1,
-        prev_event != "Pass" ~ 0
-      ),
       # adding in random shooter movement
       shooter_movement_x = sample(sample_movement$shooter_movement_x, 1),
       # fix selections resulting in shooters outside the ice surface (>200ft)
@@ -574,23 +617,8 @@ for(i in 1:500){
                                   1 - y_coordinate_2,
                                   shooter_movement_y),
       # adjust previous coordinates back a spot
-      prev_x_coordinate_5 = prev_x_coordinate_4,
-      prev_x_coordinate_4 = prev_x_coordinate_3,
-      prev_x_coordinate_3 = prev_x_coordinate_2,
-      prev_x_coordinate_2 = prev_x_coordinate,
-      prev_x_coordinate = x_coordinate,
-      prev_x_coordinate_dest = x_coordinate_2,
       x_coordinate = x_coordinate_2 + shooter_movement_x,
-      prev_y_coordinate_5 = prev_y_coordinate_4,
-      prev_y_coordinate_4 = prev_y_coordinate_3,
-      prev_y_coordinate_3 = prev_y_coordinate_2,
-      prev_y_coordinate_2 = prev_y_coordinate,
-      prev_y_coordinate = y_coordinate,
-      prev_y_coordinate_dest = y_coordinate_2,
       y_coordinate = y_coordinate_2 + shooter_movement_y,
-      # adjust the time remaining back a spot
-      prev_period_seconds_2 = prev_period_seconds,
-      prev_period_seconds = period_seconds_remaining,
       time_since_pass =
         # random sample of time elapsed between pass and shot
         sample(sample_shots$time_since_pass, 1),
@@ -599,28 +627,6 @@ for(i in 1:500){
         prev_event == "Pass" & prev_event_2 == "Pass",
         prev_period_seconds_2 - period_seconds_remaining,
         NA
-      ),
-      pass_distance = 
-        abs(sqrt((prev_x_coordinate - prev_x_coordinate_dest)^2 +
-                   (prev_y_coordinate - prev_y_coordinate_dest)^2)
-        ),
-      pass_behind_net = ifelse(
-        prev_event == "Pass" & prev_x_coordinate > 189, 1, 0
-      ),
-      pass_slot = ifelse(
-        prev_event == "Pass" &
-          # 46 ft to top of the circles in the offensive zone
-          prev_x_coordinate > 154 &
-          # only count passes that cross from one side of the net to the other side
-          ((prev_y_coordinate < 42.5 & prev_y_coordinate_dest > 42.5) |
-             (prev_y_coordinate > 42.5 & prev_y_coordinate_dest < 42.5)),
-        1, 0
-      ),
-      pass_stretch = ifelse(
-        # passes from own defensive zone to someone within 5ft of offensive zone
-        # arbitrary choice
-        prev_event == "Pass" & prev_x_coordinate < 75 & prev_x_coordinate_dest > 120,
-        1, 0
       ),
       shooter_movement =
         abs(sqrt(shooter_movement_x^2 + shooter_movement_y^2)),
@@ -637,12 +643,6 @@ for(i in 1:500){
       traffic = sample(sample_shots$traffic, 1),
       one_timer = sample(sample_shots$one_timer, 1),
       rebound = ifelse(prev_event == "Puck Recovery" & prev_event_2 == "Shot", 1, 0),
-      # previous event is always pass in these cases
-      prev_pass = 1,
-      prev_recovery = 0,
-      prev_shot = 0,
-      prev_takeaway = 0,
-      prev_zone_entry = 0
     )
   
   inc_shot_index <- select(inc_shots, event_index)
@@ -878,9 +878,9 @@ box_ev %>%
            label = "Shoot\nfirst", color = "blue") +
   annotate("text", x = .8, y = .3, hjust = 0, vjust = 0,
            label = "NA", color = "blue") +
-  annotate("text", x = 1.7, y = .9, hjust = 1, vjust = 0,
+  annotate("text", x = 1.5, y = .9, hjust = 1, vjust = 0,
            label = "Balanced\nattack", color = "blue") +
-  annotate("text", x = 1.7, y = .3, hjust = 1, vjust = 0,
+  annotate("text", x = 1.5, y = .3, hjust = 1, vjust = 0,
            label = "Pass\nfirst", color = "blue") +
   geom_hline(yintercept = f.xg,
              linetype = "dashed", color = "red") +
@@ -888,7 +888,7 @@ box_ev %>%
              linetype = "dashed", color = "red") +
   geom_label(aes(label = player), alpha = .5) +
   theme_bw() +
-  scale_x_continuous(breaks = scales::pretty_breaks(), limits = c(0.8,1.7)) +
+  scale_x_continuous(breaks = scales::pretty_breaks(), limits = c(0.8,1.5)) +
   scale_y_continuous(breaks = scales::pretty_breaks(), limits = c(.3,.97)) +
   labs(title = "Erie Otters play styles", x = "xPA/100 passes", y = "xG/10 shots",
        subtitle = "Forwards, min. 100 passes, 5-on-5 situations",
