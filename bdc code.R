@@ -1,5 +1,8 @@
+# load required packages
 library(tidyverse)
 library(xgboost, exclude = "slice")
+# load packages for viz
+# require(scales)
 library(gt)
 library(ggalluvial)
 
