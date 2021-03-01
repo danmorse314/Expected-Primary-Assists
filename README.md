@@ -28,7 +28,7 @@ For the first part, we'll construct an expected completion model similar to what
 ![pass importance matrix](https://github.com/danmorse314/Expected-Primary-Assists/blob/main/figures/pass%20model%20feature%20importance.png)
 *Fig. 1*
 
-Whether or not a pass targets a defenseman is the most important factor in predicting a pass completion. Generally, passes to defensemen are done at the blue line or while regrouping in your defensive zone, both high-completion probability situations. The pass distance and strength state are intuitively and empirically important. The most significant pass classification came with our slot pass, which makes sense as it's generally more difficult to find open space right in front of the net to get a pass through. According to the final model, passes across the slot averaged a 54.7% completion probability vs 73.6% for all other passes.
+Whether or not a pass targets a defenseman is the most important factor in predicting a pass completion. Generally, passes to defensemen are done at the blue line or while regrouping in your defensive zone, both high-completion probability situations. The pass distance and strength state are intuitively and empirically important. The most significant pass classifications came from the highest danger passes: passes from behind the net and passes across the slot. This makes sense as it's generally more difficult to find open space right in front of the net to get a pass through to your teammate. According to the final model, passes across the slot or from behind the net averaged a 60.5% completion probability vs 74.0% for all other passes.
 
 ### Expected Goals
 
