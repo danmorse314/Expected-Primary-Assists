@@ -100,4 +100,6 @@ Expected primary assists did help us find at least one underappreciated player i
 
 ##  Appendix
 
-All the code behind the models and figures can be found [here](https://github.com/danmorse314/Expected-Primary-Assists/blob/main/bdc%20code.R) 
+All the code behind the models and figures can be found [here](https://github.com/danmorse314/Expected-Primary-Assists/blob/main/bdc%20code.R)
+
+The models described in this paper were also applied to the NWHL data provided in the Big Data Cup. Those results can be found [here](https://danmorse.shinyapps.io/NWHL-2021/)
